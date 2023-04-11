@@ -16,12 +16,19 @@ class Form : public QWidget
 public:
     explicit Form(QWidget *parent = nullptr);
     ~Form();
-    QSerialPort *serial;
+        void on_pushButton_2_clicked();
+        QSerialPort *serial;
+        int m;
 
 
+signals:
+    void buttonclicked();
 
 
+private slots:
+    void on_pushButton_clicked();
 
+private:
     Ui::Form *ui;
 };
 

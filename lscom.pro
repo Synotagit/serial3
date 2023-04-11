@@ -1,6 +1,14 @@
 QT       += core gui
+QT += core
 QT += core gui serialport
+TRANSLATIONS = english.ts chinese.ts
+TRANSLATIONS = \
+            qt_cn.ts \  # 中文
+            qt_en.ts    # 英文
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+INCLUDEPATH += /Users/user/libs/boost
+TR_EXCLUDE += /Users/user/libs/boost/*
 
 CONFIG += c++11
 
@@ -15,14 +23,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+
 SOURCES += \
+    form.cpp \
     main.cpp \
     mainwindow.cpp
+    qt_language.qrc
 
 HEADERS += \
+    form.h \
     mainwindow.h
 
 FORMS += \
+    form.ui \
     mainwindow.ui
 
 # Default rules for deployment.
@@ -30,6 +43,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES +=
+DISTFILES += \
+    qt_en.ts
 
-RESOURCES +=
+RESOURCES += \
+    qt_zh_CN.qrc

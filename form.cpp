@@ -1,7 +1,8 @@
+#include "form.h"
 #include "ui_form.h"
+#include <mainwindow.h>
 #include <QSerialPort>
 #include <QSerialPortInfo>
-#include <mainwindow.h>
 #include <QStringList>
 
 Form::Form(QWidget *parent) :
@@ -9,12 +10,12 @@ Form::Form(QWidget *parent) :
     ui(new Ui::Form)
 {
     ui->setupUi(this);
-    this->setWindowTitle("setup");
-    this->setFixedSize(211,190);
-    serial->setBaudRate(ui->comboBox->currentIndex());
-    QStringList baudlist;
-    baudlist<<"9600";
-    ui->comboBox->addItems(baudlist);
+
+    QStringList baud;
+    baud<<"9600";
+    ui->comboBox->addItems(baud);
+//    m=ui->comboBox->currentIndex();
+//    serial->setBaudRate(m);
 
 }
 
@@ -23,4 +24,14 @@ Form::~Form()
     delete ui;
 }
 
+void Form::on_pushButton_2_clicked()
+{
+    close();
+}
 
+
+
+void Form::on_pushButton_clicked()
+{
+      emit buttonclicked();
+}
